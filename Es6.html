@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Paractice</title>
+</head>
+
+<body>
+    <h1>Let Vs Var</h1>
+    <h1>CLASSES</h1>
+    <h1>INHERITANCE</h1>
+    <h1>Lexical scope of "this"</h1>
+</body>
+<script>
+    a = 15;
+    console.warn(a);
+    var a = 19;
+
+    // default parameters
+
+    // function main(a, b = main()) {
+    //     return a + b;
+    // }
+    // main();
+
+
+    // Template literals
+
+    var name = 'Ahsan Ullah Khan';
+    let qoute = "Death has no calender.";
+    const sum = 30 + 20;
+    const prod = 3 * 8;
+
+    console.warn(`Allah is the creator of all. ${name} ${qoute} ${sum}. You are all good.`);
+
+
+    var numbs = [12, 343, 67, 89, 22, 34, 45, 2, 1, 5, 9, 2];
+
+    let result = numbs.find(function (item) {
+        return item > 89;
+    })
+
+    let result1 = numbs.find((item) => {
+        return item < 5;
+    })
+
+
+    let result2 = numbs.findIndex((item) => {
+        return item < 5;
+    })
+
+    function findingNumber(number) {
+        if (number > 67 && number < 343)
+            return number;
+
+    }
+
+    console.warn(result);
+    console.warn(result1);
+    console.warn(result2);
+
+    let fn = numbs.find(findingNumber);
+    console.warn(fn);
+
+
+    // Arrow function in detail
+
+    // function test1() {
+    //     return true;
+
+    // }
+
+    // let ans = function test2() {
+    //      2,5,8,0,1,2,4;
+
+    // }
+
+    // let final_ans = () =>{
+    //      5;
+    // }
+
+    // console.warn(test1());
+    // // console.warn(test2());
+    // console.warn(test1());
+    // console.warn(final_ans);
+    // console.warn(ans);
+
+    let array1 = [10, 22, 33, 44, 55, 66, 77];
+
+    // let double_array = array1.map(function(i){
+    //     return i*2;
+    // })
+
+    //  line 88-90 does same as line 93
+    let double_array = array1.map((i) => i * 2);
+
+
+
+    let item2 = {
+        name: "Ahsan",
+
+        getName: function () {
+            console.warn("Normal function ", this);
+        },
+
+        getNameArrow: () => {
+            console.warn("Arrow function ", this);
+        }
+    }
+
+    item2.getName();    //this will print the name:"Ahsan" name from the object item.
+    item2.getNameArrow();  //this will bring name from the very top because the arrow function does not own any this property by itself. The arrow function uses parents class "this"
+    //we have to use bind key word while using normal function in order to use "this" key word for the fucniton itself...
+    console.warn(double_array);
+
+
+
+    //CLASSES and IMHERITANCE
+
+
+    class Category {
+        dry_fruits() {
+            return "Badaam khush mewa_jaat me se he";
+        }
+
+        pomeFruits() {
+            return "Mango in pome fruit";
+        }
+    }
+
+    class Fruits extends Category {
+        a = "Apple";
+        b = "Banana";
+        constructor() {
+            super();
+            console.warn("hello classes", this.a);
+        }
+        Test() {
+            console.warn("Testing the fucntion");
+            return this.a;
+        }
+    }
+
+    let fruits = new Category();
+    console.warn(fruits.dry_fruits());
+    console.warn(fruits.pomeFruits());
+    let f1 = new Fruits();
+    console.warn(f1.Test());
+    console.warn("Calling parent class function from child class object");
+    console.warn(f1.pomeFruits());
+
+// lexical scope means kisi chz ki range kitni he
+// Lexical Scope for "this"  ==> scope of "this" keyword...
+// arrow function resolve the lexicle scope problem
+
+
+// let friends = {
+//     list:"friends",
+//     names:["Ahsan", "Aqeel", "Rabees", "Rafay", "Adil"],
+
+//     getFriends:function(){
+//         // console.warn(this.names);
+
+//         // let that = this.list;
+//         // this.names.map(function(item){
+//         //     console.warn(that, item);
+//         // })       the above method is not recommended instead we will use arrow funciton
+
+//         this.names.map((item) =>{
+//             console.warn(this.list, item);
+//         })
+//     },
+// }
+
+// friends.getFriends();
+
+    // REST OPERATORS ==> rmaining things===> that is when we dont know the total number of parameters.
+
+    function flowers(...n)
+    {
+        console.warn("Flowers " , n);
+    }
+
+    function pool() {
+        // return "Hello"
+        // console.warn("Hello");
+    }
+
+    flowers("Rose", "Jasmine", "Lilly", "Sun Flower", "Daisy","Motia", "Raat ki Rani", pool);
+
+
+
+    // Promise in ES6
+    let a1 = undefined;
+
+    setTimeout(() => {
+        a1 = "Hello ECMA"
+    }, 3000);
+
+    let promiseData = new Promise((resolve, resject) =>{
+        setTimeout(() => {
+            a1 = "Hello from Promise."
+            resolve("done")
+        }, 3000);
+    })
+
+    promiseData.then(()=>{
+        alert(a1);
+    })
+    // alert(a1);
+
+
+</script>
+
+</html>
