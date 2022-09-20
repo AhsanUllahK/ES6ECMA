@@ -13,6 +13,7 @@
     <h1>CLASSES</h1>
     <h1>INHERITANCE</h1>
     <h1>Lexical scope of "this"</h1>
+    <h2>Destructing of Array</h2>
 </body>
 <script>
     a = 15;
@@ -211,6 +212,29 @@
         alert(a1);
     })
     // alert(a1);
+
+// isFinite == true if returns a number
+// NaN == true is returns a string ==Not a Number
+
+
+// Destructuring of Array/Object
+
+    // const [count, setCount] = useState();        unpacking array in two variables.
+// array me destructuring index k through hoti he
+    let cars = ["BMW M2", "Ferrai 488 GTB", "orghini Aventador S", "Mercedes-AMG GT R", "Porsche 911 GT3", "Porsche 718 Cayman", "Audi R8", "Mazda MX-5",];
+    // let car1 = cars[0];
+    let [car2,car3,,,...rem_cars]= cars;
+    console.warn(car2,car3,rem_cars);
+
+// Object destructuring key k through hoti he.....
+
+let users = {
+    name:"Ahsan",
+    email: "ahsan@nu.edu.pk",
+    mob: "038920832",
+    city:"Karachi"
+}
+
 
 
 </script>
